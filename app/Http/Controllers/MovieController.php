@@ -9,7 +9,7 @@ class MovieController extends Controller
 {
     public function getMovies()
     {
-        $movies = Movie::with('episodes')->latest()->paginate(10);
+        $movies = Movie::with('episodes')->latest()->get();
         if ($movies->isEmpty()) {
             return response()->json(['message' => 'No movies found'], 404);
         }
